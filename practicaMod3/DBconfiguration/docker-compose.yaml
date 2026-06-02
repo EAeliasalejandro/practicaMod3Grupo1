@@ -1,0 +1,17 @@
+services:
+  postgres:
+    build: . #El punto indica que quiero contruir un contenedor usando un dockerfile en este directorio.
+    container_name: ContDBpracticaMod3 #Nombre del contenedor
+    port:
+      - "5432:5432" #Puerto para conectar desde tu maquina al host del contenedor
+    environment:
+      POSTGRES_USER: Admin #usuario de la base de datos
+      POSTGRES_PASSWORD: p4ssw0rdDB #Contraseña del usuario
+      POSTGRES_DB: credenciales #Nombre de la base de datos
+    volumes:
+      #Espacio donde los datos se conservarám, al detener el contenedor
+      - postgres_data:/var/lib/postgresql/data
+
+volumes: #Defino los volumenes de manera global
+  postgres_data:
+    driver: local
