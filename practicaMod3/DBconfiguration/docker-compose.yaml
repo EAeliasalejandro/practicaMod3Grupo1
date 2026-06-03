@@ -2,7 +2,7 @@ services:
   postgres:
     build: . #El punto indica que quiero contruir un contenedor usando un dockerfile en este directorio.
     container_name: ContDBpracticaMod3 #Nombre del contenedor
-    port:
+    ports:
       - "5432:5432" #Puerto para conectar desde tu maquina al host del contenedor
     environment:
       POSTGRES_USER: Admin #usuario de la base de datos
