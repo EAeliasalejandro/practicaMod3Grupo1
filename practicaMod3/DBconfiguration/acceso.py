@@ -49,9 +49,22 @@ def obtener_datos_usuario(username, password):
             print(f"Fecha de Nacimiento: {usuario[4]}")
         else:
             print("\nUsuario o contraseña incorrectos.")
-            cursor.close()
-            conn.close()
 
+
+        cursor.close()
+        conn.close()
             
     except Exception as e:
         print("Error de consulta a base de datos: ",e)
+
+    
+    if __name__=="__main__":
+        print("Inicio de sesión en la base de datos")
+        
+        #Solicitar credenciales del usuario
+        user = input("Ingrese un usuario: ")
+
+        #Solicitar la contraseña sin que se vea
+        pdw = getpass.getpass("Ingresar contraseña: ")
+
+        obtener_datos_usuario(user, pdw)
