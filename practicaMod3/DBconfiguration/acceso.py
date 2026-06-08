@@ -58,13 +58,13 @@ def obtener_datos_usuario(username, password):
         print("Error de consulta a base de datos: ",e)
 
     
-    if __name__=="__main__":
-        print("Inicio de sesión en la base de datos")
+if __name__=="__main__":
+    print("Inicio de sesión en la base de datos")
         
-        #Solicitar credenciales del usuario
-        user = input("Ingrese un usuario: ")
+    #Solicitar credenciales del usuario
+    user = input("Ingrese un usuario: ")
 
-        #Solicitar la contraseña sin que se vea
-        pdw = getpass.getpass("Ingresar contraseña: ")
+    #Solicitar la contraseña sin que se vea
+    pdw = getpass.getpass("Ingresar contraseña: ")
 
-        obtener_datos_usuario(user, pdw)
+    obtener_datos_usuario(user, pdw)
