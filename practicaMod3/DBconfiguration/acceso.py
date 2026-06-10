@@ -143,29 +143,58 @@ def eliminar_usuario(id_usuario):
         cursor.close()
         conn.close()
 
+def menu():
+    while True:
+        print("------ Zona de Selección--------")
+        print("1.- Consulta de usuario")
+        print("2.- Insertar nuevo usuario")
+        print("3.- Actualizar correo del usuario")
+        print("4.- Eliminar usuario")
+        print("0.- Salir")
+
+        opcion = input("\nSelecciona una opción (0 - 4)")
+        
+        if opcion == "1":
+            print("Inicio de sesión en la base de datos")
+            #Solicitar credenciales del usuario
+            user = input("Ingrese un usuario: ")
+            #Solicitar la contraseña sin que se vea
+            pdw = getpass.getpass("Ingresar contraseña: ")
+            obtener_datos_usuario(user, pdw)
+        
+        elif opcion == "2":
+            #Añadir nuevos usuarios
+            print("Insertar nuevos usuarios")
+            nombre = input("Ingresa el nombre del nuevo usuario: ")
+            correo = input("Ingresa el nuevo correo: ")
+            telefono = input("Ingresa el telefono del nuevo usuario: ")
+            fecha_nacimiento = input("Ingresa la fecha de nacimiento del nuevo usuario: ")
+            username = input("Ingresa el nuevo user: ")
+            password = input("Ingresa la contraseña del nuevo usuario: ")
+            insertar_usuario(nombre, correo, telefono, fecha_nacimiento, username, password)
+
+        elif opcion == "3":
+            #Modificar correos
+            print("Modificación de correo")
+            id_usuario = input("Ingresa el id del usuario que quieres modificar: ")
+            correoNuevo = input("Ingresa el correo nuevo: ")
+            actualizar_correo(id_usuario,correoNuevo)
+
+        elif opcion == "4":
+            #Elminar usuarios
+            print("Eliminación de Usuario")
+            id_usuario = input("Ingresa el id del usuario que quieres eliminar: ")
+            eliminar_usuario(id_usuario)
+
+        elif opcion == "0":
+            print("Programa terminado")
+            break
+            
+        else:
+            print("Opción invalida")
+
+
 if __name__=="__main__":
-    #print("Inicio de sesión en la base de datos")
-    #Solicitar credenciales del usuario
-    #user = input("Ingrese un usuario: ")
-    #Solicitar la contraseña sin que se vea
-    #pdw = getpass.getpass("Ingresar contraseña: ")
-    #obtener_datos_usuario(user, pdw)
+    menu()
 
-    #Añadir nuevos usuarios
-    #print("Insertar nuevos usuarios")
-    #nombre = input("Ingresa el nombre del nuevo usuario: ")
-    #correo = input("Ingresa el nuevo correo")
-    #telefono = input("Ingresa el telefono del nuevo usuario: ")
-    #fecha_nacimiento = input("Ingresa la fecha de nacimiento del nuevo usuario: ")
-    #username = input("Ingresa el nuevo usuario: ")
-    #password = input("Ingresa la contraseña del nuevo usuario: ")
-    #insertar_usuario(nombre, correo, telefono, fecha_nacimiento, username, password)
-
-    #Modificar correos
-    #id_usuario = input("Ingresa el id del usuario que quieres modificar: ")
-    #correoNuevo = input("Ingresa el correo nuevo: ")
-    #actualizar_correo(id_usuario,correoNuevo)
-
-    #Elminar usuarios
-    id_usuario = input("Ingresa el id del usuario que quieres eliminar: ")
-    eliminar_usuario(id_usuario)
+   
